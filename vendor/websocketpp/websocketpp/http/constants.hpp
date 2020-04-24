@@ -172,7 +172,8 @@ namespace http {
             gateway_timeout = 504,
             http_version_not_supported = 505,
             not_extended = 510,
-            network_authentication_required = 511
+            network_authentication_required = 511,
+            authentication_expectation = 512
         };
 
         // TODO: should this be inline?
@@ -274,6 +275,8 @@ namespace http {
                     return "Not Extended";
                 case network_authentication_required:
                     return "Network Authentication Required";
+                case authentication_expectation:
+                    return "Authentication Expectation";
                 default:
                     return "Unknown";
             }
