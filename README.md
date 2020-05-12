@@ -1,5 +1,4 @@
 snapscale/libraries/fc is the cell-level module of the SnapScale project, which defines the basic variable data structure in the SnapScale project, including String, Time, Publickey, Privatekey, Signature, Base series encoding, etc.
-
 <br>
 
 ---
