@@ -55,7 +55,7 @@ public:
       set_verify_peers(true);
    }
 
-   void add_cert(const std::string& cert_pem_string) {
+   void add_cert(const std::string& cert_pem_string) { // add one trusted certification authority
       error_code ec;
       _sslc.add_certificate_authority(boost::asio::buffer(cert_pem_string.data(), cert_pem_string.size()), ec);
       FC_ASSERT(!ec, "Failed to add cert: ${msg}", ("msg", ec.message()));

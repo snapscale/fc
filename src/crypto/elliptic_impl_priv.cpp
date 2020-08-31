@@ -81,7 +81,7 @@ namespace fc { namespace ecc {
                                         const unsigned char *key32, unsigned int attempt,
                                         const void *data ) {
         unsigned int* extra = (unsigned int*) data;
-        (*extra)++;
+        (*extra)++; //THIS IS THE INITIAL COUNTER VALUE, NOW IT IS 1 INSTEAD OF 0
         return secp256k1_nonce_function_default( nonce32, msg32, key32, *extra, nullptr );
     }
 
@@ -96,6 +96,16 @@ namespace fc { namespace ecc {
             FC_ASSERT( secp256k1_ecdsa_sign_compact( detail::_get_context(), (unsigned char*) digest.data(), (unsigned char*) result.begin() + 1, (unsigned char*) my->_key.data(), extended_nonce_function, &counter, &recid ));
         } while( require_canonical && !public_key::is_canonical( result ) );
         result.begin()[0] = 27 + 4 + recid;
+
+        //test
+        // std::cout << "recid: " << recid << std::endl;
+        // std::cout << "signature length 64 byte: \n";
+        // for(size_t i=1; i<result.size(); i++){
+        //     printf("%02x", (unsigned char)result.data[i]);
+        // }
+        // std::cout << std::endl;
+        //test end
+
         return result;
     }
 
